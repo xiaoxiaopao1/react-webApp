@@ -3,6 +3,8 @@ import PureRenderMixin from 'react-addons-pure-render-mixin'
 
 import Item from './Item'
 
+import './style.less'
+
 class List extends React.Component {
 	constructor(props,context){
 		super(props,context);

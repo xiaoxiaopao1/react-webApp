@@ -6,6 +6,7 @@ import HomeHeader from '../../components/HomeHeader'
 import Categray from '../../components/Categray'
 import Ad from './subpage/Ad.jsx'
 import List from './subpage/List.jsx'
+import Swiper from './subpage/Swiper.jsx'
 
 class Home extends React.Component {
 	constructor(props,context){
@@ -16,8 +17,7 @@ class Home extends React.Component {
 		return(
 			<div>
 				<HomeHeader cityName={this.props.userinfo.cityName} />
-				<Categray />
-				<div style={{height: '15px'}} />
+				<Swiper />
 				<Ad />
 				<List cityName={this.props.userinfo.cityName} />
 			</div>
