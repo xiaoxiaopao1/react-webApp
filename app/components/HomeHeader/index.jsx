@@ -2,6 +2,8 @@ import React from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 import { Link } from 'react-router'
 
+import SearchInput from '../SearchInput'
+
 import './style.less'
 
 class HomeHeader extends React.Component {
@@ -25,7 +27,7 @@ class HomeHeader extends React.Component {
 				<div className="home-header-middle">
 					<div className="search-container">
 						<i className="icon-search"></i>
-						<input placeholder="请输入关键字" />
+						<SearchInput value="" />
 					</div>
 				</div>
 			</div>
