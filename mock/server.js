@@ -75,6 +75,13 @@ router.get('/api/search/:page/:city/:category', function *(next) {
     this.body = searchListData
 })
 
+// 城市页 —— 城市列表
+var cityList = require('./city/list.js')
+router.get('/api/citylist', function *(next) {
+
+    this.body = cityList
+});
+
 // 开始服务并生成路由
 app.use(router.routes())
    .use(router.allowedMethods());
