@@ -12,12 +12,14 @@ class Star extends React.Component {
 		if (star > 5) {
 			star %= 5
 		};
+
 		const totalNum = this.totalStar();
 		return(
-			<div>
+			<div className="star">
 				{
 					totalNum.map((item,index) => {
 						const lightClass = star >= item ? 'light' : '';
+						
 						return (
 							<i key={index} className={'icon-star ' + lightClass}></i>
 						)

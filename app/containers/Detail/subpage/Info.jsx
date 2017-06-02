@@ -35,7 +35,6 @@ class Info extends React.Component {
 			this.setState({
 				info: data
 			})
-			console.log(this.state.info)
 		})
 	}
 }

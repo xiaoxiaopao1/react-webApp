@@ -17,7 +17,7 @@ class DetailInfo extends React.Component {
 					<div className="info-img-container float-left">
 						<img src={data.img} />
 					</div>
-					<div className="info-content float-left">
+					<div className="info-content float-right">
 						<h1>{data.title}</h1>
 						<div className="star-container">
 							{/*引用star组件*/}
