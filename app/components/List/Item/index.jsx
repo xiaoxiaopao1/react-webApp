@@ -34,6 +34,7 @@ class Item extends React.Component {
 	}
 	componentDidMount(){
 		const data = this.props.data;
+		
 	}
 }
 
