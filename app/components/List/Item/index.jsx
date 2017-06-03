@@ -35,10 +35,6 @@ class Item extends React.Component {
 			</div>
 		)
 	}
-	componentDidMount(){
-		const data = this.props.data;
-		
-	}
 }
 
 export default Item
