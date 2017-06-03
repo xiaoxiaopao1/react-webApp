@@ -23,8 +23,9 @@ class Login extends React.Component {
 				</div>
 				<div className="input-container password-container">
 					<i className="icon-key" />
-					<button>发送验证码</button>
 					<input type="text" placeholder="输入验证码" />
+					<button>发送验证码</button>
+					
 				</div>
 				<button className="btn-login" onClick={this.clickHandler.bind(this)}>登录</button>
 			</div>
