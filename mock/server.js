@@ -110,6 +110,19 @@ router.get('/api/detail/comment/:page/:id',function *(next){
     this.body = detailComment;
 })
 
+// 用户中心 - 订单列表
+const orderList = require('./user/orderList.js');
+router.get('/api/orderlist/:username',function *(next) {
+    console.log('订单列表');
+
+    const params = this.params,
+          username = params.username;
+
+    console.log('用户名: ' + username);
+
+    this.body = orderList;
+})
+
 // 开始服务并生成路由
 app.use(router.routes())
    .use(router.allowedMethods());

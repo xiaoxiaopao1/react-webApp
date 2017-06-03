@@ -1,5 +1,11 @@
 import React from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
+import { connect } from 'react-redux'
+import { hashHistory } from 'react-router'
+
+import Header from '../../components/CityHeader'
+import UserInfo from '../../components/UserInfo'
+import OrderList from './subpage/OrderList'
 
 class User extends React.Component {
 	constructor(props,context){
@@ -7,10 +13,38 @@ class User extends React.Component {
 		this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
 	}
 	render(){
+		const userinfo = this.props.userinfo;
 		return(
-			<div>404 User</div>
+			<div>
+				<Header title="用户中心" backRouter="/" />
+				<UserInfo username={userinfo.username}
+						  cityName={userinfo.cityName} />
+				<OrderList username={userinfo.username} />
+			</div>
 		)
+	}
+	//用来处理用户未登录，却直接输入网址到用户中心的情况
+	componentDidMount() {
+		//如果未登录，直接跳转到登录界面
+		if (!this.props.userinfo.username) {
+			hashHistory.push('/Login');
+		}
 	}
 }
 
-export default User
+// -------------------redux react 绑定--------------------
+
+function mapStateToProps(state) {
+    return {
+        userinfo: state.userinfo
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+    }
+}
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(User)
