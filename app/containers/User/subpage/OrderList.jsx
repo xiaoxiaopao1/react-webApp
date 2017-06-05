@@ -1,6 +1,6 @@
 import React from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
-import { getOrderListData } from '../../../fetch/user/user'
+import { getOrderListData, postComment } from '../../../fetch/user/user'
 
 import OrderListComponent from '../../../components/OrderList'
 
@@ -20,13 +20,15 @@ class OrderList extends React.Component {
 				<h2>您的订单</h2>
 				{
 					this.state.data.length
-					? <OrderListComponent data={this.state.data} />
+					? <OrderListComponent data={this.state.data}
+										  submitComment={this.submitComment.bind(this)} />
 					: <div>{/* 加载中... */}</div>
 				}
 			</div>
 		)
 	}
 	componentDidMount() {
+		
 		//获取订单数据
 		const username = this.props.username;
 		if (username) {
@@ -42,6 +44,18 @@ class OrderList extends React.Component {
 			this.setState({
 				data: data
 			})
+		})
+	}
+	// 提交评价
+	submitComment(id,value,star,callback) {
+		const result = postComment(id,value,star);
+		result.then((res) => {
+			return res.json();
+		}).then((json) => {
+			if (json.errno === 0) {
+				//已经评价，修改状态
+				callback();
+			}
 		})
 	}
 }

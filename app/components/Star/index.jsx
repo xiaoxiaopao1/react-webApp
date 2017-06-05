@@ -6,9 +6,12 @@ class Star extends React.Component {
 	constructor(props,context){
 		super(props,context);
 		this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
+		this.state = {
+			star: 0
+		}
 	}
 	render(){
-		let star = this.props.star || 0;
+		let star = this.state.star;
 		if (star > 5) {
 			star %= 5
 		};
@@ -21,7 +24,7 @@ class Star extends React.Component {
 						const lightClass = star >= item ? 'light' : '';
 						
 						return (
-							<i key={index} className={'icon-star ' + lightClass}></i>
+							<i key={index} className={'icon-star ' + lightClass} onClick={this.clickHandler.bind(this,item)}></i>
 						)
 					})
 				}
@@ -34,6 +37,24 @@ class Star extends React.Component {
 			totalNum[i] = i + 1
 		};
 		return totalNum;
+	}
+	componentDidMount() {
+		this.setState({
+			star: this.props.star
+		})
+	}
+	clickHandler(star) {
+		const clickCallback = this.props.clickCallback;
+		
+		if (!clickCallback) {
+			return
+		}
+
+		this.setState({
+			star: star
+		})
+
+		clickCallback(star);
 	}
 }
 
