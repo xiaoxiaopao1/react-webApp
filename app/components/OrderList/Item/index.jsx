@@ -95,7 +95,6 @@ class Item extends React.Component {
 
 		// 执行数据提交
 		submitComment(id,value,stars,this.commentOk.bind(this));
-		console.log(stars)
 	}
 	commentOk() {
 		//已经评价修改状态

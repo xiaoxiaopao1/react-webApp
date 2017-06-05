@@ -26,7 +26,6 @@ class List extends React.Component {
             return res.json()
         }).then((json) => {
             const data = json;
-            console.log(data);
             this.setState({
                 data: data
             })

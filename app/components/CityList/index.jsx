@@ -9,7 +9,6 @@ class CityList extends React.Component {
 	}
 	render(){
 		var data = this.props.data;
-		console.log(data)
 		return(
 			<div className="city-list-container">
 				<h3>热门城市</h3>
